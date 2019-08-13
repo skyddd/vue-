@@ -21,6 +21,7 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
+  //组件注册
   components:{
   	Top,Left,Right
   }

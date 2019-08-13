@@ -38,28 +38,28 @@
 							{
 								'id':0,
 								'ico':'\ue60c',
-								'name':'美食',
+								'name':'添加',
 								'fontsize':'26px',
 								'colors':'#ff0042',
 							},
 							{
 								'id':1,
 								'ico':'\ue6bc',
-								'name':'酒店',
+								'name':'嘲讽',
 								'fontsize':'18px',
 								'colors':'',
 							},
 							{
 								'id':2,
 								'ico':'\ue694',
-								'name':'休闲娱乐',
+								'name':'视频',
 								'fontsize':'18px',
 								'colors':'',
 							},
 							{
 								'id':3,
 								'ico':'\ue622',
-								'name':'导购',
+								'name':'音乐',
 								'fontsize':'18px',
 								'colors':'',
 							},
@@ -176,6 +176,12 @@
 				],
 			}
 		},
+		created(){
+			
+		},
+		mounted(){
+			this.ej_style();
+		},
 		//放法
 		methods:{
 			//一级菜单点击方法
@@ -196,6 +202,8 @@
 			},
 			//二级菜单点击方法
 			two_click:function(list,index,id){
+				let Id=id;
+				sessionStorage.setItem('ID',Id);//存当前点击的id
 				//初始化二级菜单字体
 				this.one_title.forEach(function(item){
 					item.two_title.forEach(function(two_item,i,arr){
@@ -206,9 +214,6 @@
 				if(list.fontsize=='18px' || list.colors==''){
 					list.fontsize='26px';
 					list.colors='#ff0042';
-				}else{
-					list.fontsize='18px';
-					list.colors=''; 
 				}
 				if(id==0){
 					this.$router.push({
@@ -219,6 +224,25 @@
 					this.$router.push({
 						path:'/jiudian'
 					});
+				}
+				if(id==2){
+					this.$router.push({
+						path:'/video'
+					});
+				}
+			},
+			//刷新不改变二级菜单样式
+			ej_style:function(){
+				let ses=sessionStorage.getItem('ID');//存密码
+				for(let i=0;i<this.one_title.length;i++){
+					for(let j=0;j<this.one_title[i].two_title.length;j++){
+						this.one_title[i].two_title[j].colors="";
+						this.one_title[i].two_title[j].fontsize="18px";
+						if(ses==this.one_title[i].two_title[j].id){
+							this.one_title[i].two_title[j].colors="#ff0042";
+							this.one_title[i].two_title[j].fontsize="26px";
+						}
+					}
 				}
 			}
 		}

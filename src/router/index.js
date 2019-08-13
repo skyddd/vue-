@@ -4,7 +4,9 @@ import Login from '@/components/login'//登陆组件
 import Main from '@/components/rukou/mains'//入口组件
 import Right from '@/components/right'//右边主体组件
 import Meishi from '@/components/zhuti/meishi'//美食组件
+import Tjianjia from '@/components/zhuti/tianjia'//美食下的添加组件
 import Jiudian from '@/components/zhuti/jiudian'//酒店组件
+import Video from '@/components/zhuti/Video'//视频组件
 
 Vue.use(Router)
 
@@ -38,9 +40,26 @@ var router=new Router({
 	    	meta:{//设置登陆权限
       			"dl":true
       		},
-	    }
+	    },
+	    {
+			path:'/tianjia',
+			name:'Tjianjia',
+			component:Tjianjia,
+			meta:{//设置登陆权限
+      			"dl":true
+      		},
+		},
+		{
+			path:'/video',
+			name:'Video',
+			component:Video,
+			meta:{//设置登陆权限
+      			"dl":true
+      		},
+		}
       ]
     }, 
+    
   ]
 });
 export default router;

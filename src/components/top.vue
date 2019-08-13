@@ -8,7 +8,7 @@
 			<div class="to">
 				<div class="name">
 					<i style="margin-right: 5px;" class="ys">欢迎</i>
-					<span class="ys" v-bind:title="name">王全蛋</span>
+					<span class="ys" v-bind:title="name">{{name}}</span>
 				</div>
 				<div class="sx"></div>
 				<div class="off" v-on:click='tc'>退出系统</div>
@@ -78,6 +78,7 @@ export default{
 		tc:function(){
 			sessionStorage.removeItem('usertitle');//删除账号
 			sessionStorage.removeItem('userpassword');//删除密码
+			sessionStorage.removeItem('ID');//删除左侧列表点击ID
 			this.$router.replace({
 				path:'/login'
 			});
